@@ -15,6 +15,7 @@ class CreateEpisodesTable extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
+            $table->uuid('episode_uuid')->unique();
             $table->timestamps();
             $table->string('title');
             $table->foreignId('podcast_id')->onDelete('cascade')->constrained();

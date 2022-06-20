@@ -24,6 +24,7 @@ class PodcastSeeder extends Seeder
                 'title' => Str::random(10),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'podcast_uuid' => Str::uuid()->toString()
             ]);
         }   
         

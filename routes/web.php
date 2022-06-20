@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DownloadController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(DownloadController::class)->group(function () {
+    Route::post('/api/create_download', 'store')->name('downloads.store');
 });

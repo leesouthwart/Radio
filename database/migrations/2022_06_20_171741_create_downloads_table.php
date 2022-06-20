@@ -15,12 +15,12 @@ class CreateDownloadsTable extends Migration
     {
         Schema::create('downloads', function (Blueprint $table) {
             $table->id();
+            $table->uuid('event_id')->unique();
             $table->timestamps();
             $table->string('type')->nullable();
-            $table->unsignedInteger('event_id');
             $table->datetime('occurred_at');
-            $table->foreignId('episode_id')->constrained();
-            $table->foreignId('podcast_id')->constrained();
+            $table->uuid('episode_id')->unique();
+            $table->uuid('podcast_id')->unique();
         });
     }
 

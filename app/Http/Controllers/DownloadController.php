@@ -21,7 +21,7 @@ class DownloadController extends Controller
 
         $download = new Download;
         $download->type = $request->type;
-        $download->event_id = $request->event_id;
+        $download->id = $request->event_id;
         $download->occurred_at = $request->occurred_at;
         $download->episode_id = $request->data['episode_id'];
         $download->podcast_id = $request->data['podcast_id'];

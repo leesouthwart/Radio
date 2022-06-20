@@ -14,13 +14,12 @@ class CreateDownloadsTable extends Migration
     public function up()
     {
         Schema::create('downloads', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('event_id')->unique();
+            $table->uuid('id')->primary();
             $table->timestamps();
             $table->string('type')->nullable();
             $table->datetime('occurred_at');
-            $table->uuid('episode_id')->unique();
-            $table->uuid('podcast_id')->unique();
+            $table->foreignUuid('episode_id')->unique();
+            $table->foreignUuid('podcast_id')->unique();
         });
     }
 

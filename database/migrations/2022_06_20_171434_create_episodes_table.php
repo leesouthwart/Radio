@@ -14,11 +14,10 @@ class CreateEpisodesTable extends Migration
     public function up()
     {
         Schema::create('episodes', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('episode_uuid')->unique();
+            $table->uuid('id')->primary();
             $table->timestamps();
             $table->string('title');
-            $table->foreignId('podcast_id')->onDelete('cascade')->constrained();
+            $table->foreignUuid('podcast_id')->onDelete('cascade')->constrained();
         });
     }
 

@@ -71,6 +71,7 @@ class EventApiTest extends TestCase
             ->assertStatus(422);
     }
 
+    // Check that the event type is 'episode.downloaded', if not, handler should throw an exception.
     public function test_event_type_must_be_episode_downloaded()
     {
         $dataBadFormat = $this->data;

@@ -30,6 +30,7 @@ class DownloadController extends Controller
             $download->podcast_id = $request['data']['podcast_id'];
             $download->save();
         } else {
+            // For now we only want to save downloads with the correct type.
             return response()->json(['message' => 'Event Type was not the expected type.'], 500);
         }
         

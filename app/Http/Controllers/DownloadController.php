@@ -20,14 +20,19 @@ class DownloadController extends Controller
         ]);
 
         $request = $request->json()->all();
-        $download = new Download;
-        $download->type = $request['type'];
-        $download->id = $request['event_id'];
-        $download->occurred_at = $request['occurred_at'];
-        $download->episode_id = $request['data']['episode_id'];
-        $download->podcast_id = $request['data']['podcast_id'];
 
-        $download->save();
+        if ($request['type'] == 'episode.downloaded') {
+            $download = new Download;
+            $download->type = $request['type'];
+            $download->id = $request['event_id'];
+            $download->occurred_at = $request['occurred_at'];
+            $download->episode_id = $request['data']['episode_id'];
+            $download->podcast_id = $request['data']['podcast_id'];
+            $download->save();
+        } else {
+            return response()->json(['message' => 'Event Type was not the expected type.'], 500);
+        }
+        
 
         return;
     }

@@ -70,4 +70,13 @@ class EventApiTest extends TestCase
         $this->postJson(route('downloads.store'), $dataBadFormat)
             ->assertStatus(422);
     }
+
+    public function test_event_type_must_be_episode_downloaded()
+    {
+        $dataBadFormat = $this->data;
+        $dataBadFormat['type'] = 'Not episode.downloaded';
+        
+        $this->postJson(route('downloads.store'), $dataBadFormat)
+            ->assertJson(['message' => 'Event Type was not the expected type.'], $strict = false);
+    }
 }

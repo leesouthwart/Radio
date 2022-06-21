@@ -19,12 +19,13 @@ class DownloadController extends Controller
             'data.podcast_id' => ['required', 'uuid']
         ]);
 
+        $request = $request->json()->all();
         $download = new Download;
-        $download->type = $request->type;
-        $download->id = $request->event_id;
-        $download->occurred_at = $request->occurred_at;
-        $download->episode_id = $request->data['episode_id'];
-        $download->podcast_id = $request->data['podcast_id'];
+        $download->type = $request['type'];
+        $download->id = $request['event_id'];
+        $download->occurred_at = $request['occurred_at'];
+        $download->episode_id = $request['data']['episode_id'];
+        $download->podcast_id = $request['data']['podcast_id'];
 
         $download->save();
 

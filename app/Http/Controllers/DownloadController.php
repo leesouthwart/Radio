@@ -29,7 +29,5 @@ class DownloadController extends Controller
         $download->save();
 
         return;
-
-
     }
 }

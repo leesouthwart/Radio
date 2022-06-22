@@ -15,6 +15,8 @@ An api that takes an episode_id as a parameter and returns the amount of downloa
 
  - Clone repo
  - Create an empty database, and change .env details to match the database
+ - run 'composer install'
+ - run 'php artisan key:generate'
  - run 'php artisan migrate'
  - run 'php artisan db:seed'
  - run 'php artisan test'

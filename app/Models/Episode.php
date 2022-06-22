@@ -9,4 +9,9 @@ use App\Traits\Uuids;
 class Episode extends Model
 {
     use HasFactory, Uuids;
+
+    public function podcast()
+    {
+        return $this->belongsTo(Podcast::class);
+    }
 }

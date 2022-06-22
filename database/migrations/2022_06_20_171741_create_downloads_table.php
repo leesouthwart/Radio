@@ -18,8 +18,8 @@ class CreateDownloadsTable extends Migration
             $table->timestamps();
             $table->string('type')->nullable();
             $table->datetime('occurred_at');
-            $table->foreignUuid('episode_id')->unique();
-            $table->foreignUuid('podcast_id')->unique();
+            $table->foreignUuid('episode_id');
+            $table->foreignUuid('podcast_id');
         });
     }
 

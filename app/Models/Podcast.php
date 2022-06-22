@@ -9,4 +9,9 @@ use App\Traits\Uuids;
 class Podcast extends Model
 {
     use HasFactory, Uuids;
+
+    public function episodes()
+    {
+        return $this->hasMany(Episode::class);
+    }
 }

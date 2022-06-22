@@ -19,7 +19,7 @@ class PodcastSeeder extends Seeder
     public function run()
     {
         //
-        foreach (range(1,15) as $index) {
+        foreach (range(1,3) as $index) {
             DB::table('podcasts')->insert([
                 'title' => Str::random(10),
                 'created_at' => Carbon::now(),

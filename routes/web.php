@@ -20,5 +20,6 @@ Route::get('/', function () {
 });
 
 Route::controller(DownloadController::class)->group(function () {
-    Route::post('/api/create_download', 'store')->name('downloads.store');
+    Route::post('/webhook', 'store')->name('downloads.store');
+    Route::get('/api/download_data/{id}', 'view_downloads_data')->name('downloads.view');
 });

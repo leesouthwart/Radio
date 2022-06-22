@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use App\Models\Download;
+use App\Models\Episode;
 
 use Carbon\Carbon;
 
@@ -42,12 +43,16 @@ class DownloadController extends Controller
 
     public function view_downloads_data($id)
     {
+        if(Episode::find($id) == 0) {
+            return Response::json(['response' => 'No episode exists with this id.'], 404, array('Content-Type' => 'application/json'), JSON_UNESCAPED_UNICODE);
+        }
+        
         // Get downloads for a specific ID, grouped by day and counted.
         $downloads = Download::where('episode_id', $id)->whereDate('occurred_at', '>=', Carbon::today()->subDays(7))
         ->select(DB::raw('DATE(occurred_at) as occurred_at_date'), DB::raw('count(*) as downloads'))
         ->groupBy('occurred_at')
         ->get();
-        
+
         $data = [];
 
         foreach (range(1, 7) as $i) {

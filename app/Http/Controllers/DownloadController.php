@@ -66,7 +66,6 @@ class DownloadController extends Controller
             $data[$d->occurred_at_date] = $d->downloads;
         }
         
-        //return json_encode($data);
         return Response::json($data, 200, array('Content-Type' => 'application/json'), JSON_UNESCAPED_UNICODE);
     }
 }

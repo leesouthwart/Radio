@@ -57,7 +57,7 @@ class DownloadsApiTest extends TestCase
             $data[6]
         ]);
     }
-
+    
     public function test_check_episode_id_must_exist()
     {
         $this->get(route('downloads.view', ['id' => 'complete_false_test_id']))

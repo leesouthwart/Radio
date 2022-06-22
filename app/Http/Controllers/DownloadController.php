@@ -43,7 +43,7 @@ class DownloadController extends Controller
 
     public function view_downloads_data($id)
     {
-        if(Episode::find($id) == 0) {
+        if(Episode::where('id', $id)->get()->isEmpty()) {
             return Response::json(['response' => 'No episode exists with this id.'], 404, array('Content-Type' => 'application/json'), JSON_UNESCAPED_UNICODE);
         }
         
